@@ -1,13 +1,13 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">FoxOverflow</a>
+      <%= link_to "Fox Overflow", root_path, :class => "navbar-brand" %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active">
-          <li><a href="#">Recent Questions</a></li>
+          <li><%= link_to "Recent Questions", root_path %></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -17,10 +17,11 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li><a href="#">Profile</a></li>
+          <li><%= link_to "Profile", user_session_path %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path %></li>
         <% else %>
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Sign In</a></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
         <% end %>
       </ul>
     </div>
