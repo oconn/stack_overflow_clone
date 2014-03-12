@@ -3,22 +3,18 @@ StackOflow::Application.routes.draw do
   devise_for :users
   root 'welcome#index'
 
-  resources :comments
-
-
   resources :questions do
     resources :answers
   end
 
   resources :votes
-  match 'comments', to: 'comment#index',   via: :get
-  match 'comments', to: 'comment#create',  via: :post
-  match 'comments', to: 'comment#new',     via: :get
-  match 'comments', to: 'comment#edit',    via: :get
-  match 'comments', to: 'comment#show',    via: :get
-  match 'comments', to: 'comment#update',  via: :patch
-  match 'comments', to: 'comment#update',  via: :put
-  match 'comments', to: 'comment#destroy', via: :delete
+  match '/comments', to: 'comments#index',   via: :get
+  match '/comments', to: 'comments#create',  via: :post
+  match '/comments/new', to: 'comments#new',     via: :get
+  match '/comments/:id/edit', to: 'comments#edit',    via: :get
+  match '/comments/:id/show', to: 'comments#show',    via: :get
+  match '/comments/:id/update', to: 'comments#update',  via: :patch
+  match '/comments/:id/destroy', to: 'comments#destroy', via: :delete
 
 
 
