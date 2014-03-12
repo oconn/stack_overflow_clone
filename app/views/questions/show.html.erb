@@ -1,5 +1,7 @@
 <h1><%= @question.title %></h1>
-
 <p><%= @question.body %></p>
+<% if current_user.id == @question.user_id %>
+<%= link_to "Delete Question", question_path(@question.id), method: "delete" %>
+<% end %>
 
 
