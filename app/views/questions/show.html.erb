@@ -9,7 +9,7 @@
 	<h3>Answers</h3>
 	<% @question.answers.each do |answer| %>
 	  <div><%= answer.body %></div>
-	  <div><%= answer.user.username %></div>
+	  <div>Username: <%= answer.user.username %></div>
 	<% end %>
 <% end %>
 
