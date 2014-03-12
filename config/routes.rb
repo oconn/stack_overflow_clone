@@ -2,12 +2,39 @@ StackOflow::Application.routes.draw do
   # You can have the root of your site routed with "root"
   devise_for :users
   root 'welcome#index'
-      resources :comments
+
+  # resources :comments
+
   resources :questions do
     resources :answers
   end
   
   resources :votes
+
+  match '/comments',          to: 'comments#index',   via: :get, as: "comments"
+  match '/comments',          to: 'comments#create',  via: :post
+  match '/comments/new',      to: 'comments#new',     via: :get, as: "new_comment"
+  match '/comments/:id/edit', to: 'comments#edit',    via: :get, as: "edit_comment"
+  match '/comments/:id',      to: 'comments#show',    via: :get, as: "comment"
+  match '/comments/:id',      to: 'comments#update',  via: :patch
+  match '/commetns/:id',      to: 'comments#destroy', via: :delete
+
+
+
+
+
+
+
+
+
+#    comments  GET    /comments(.:format)                                comments#index
+#              POST   /comments(.:format)                                comments#create
+# new_comment  GET    /comments/new(.:format)                            comments#new
+# edit_comment GET    /comments/:id/edit(.:format)                       comments#edit
+#    comment   GET    /comments/:id(.:format)                            comments#show
+#              PATCH  /comments/:id(.:format)                            comments#update
+#              PUT    /comments/:id(.:format)                            comments#update
+#              DELETE /comments/:id(.:format)                            comments#destroy
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
