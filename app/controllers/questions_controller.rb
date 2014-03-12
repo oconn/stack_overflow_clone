@@ -23,6 +23,11 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @question.delete
+    redirect_to root_path
+  end
   private
 
   def question_params
