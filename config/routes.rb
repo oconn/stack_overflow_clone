@@ -1,8 +1,10 @@
 StackOflow::Application.routes.draw do
   # You can have the root of your site routed with "root"
   devise_for :users
-  resources :questions
   root 'welcome#index'
+  resources :questions do
+    resources :answers
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

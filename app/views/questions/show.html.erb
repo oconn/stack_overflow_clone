@@ -5,3 +5,20 @@
 <% end %>
 
 
+<% if !@question.answers.empty? %>
+	<h3>Answers</h3>
+	<% @question.answers.each do |answer| %>
+	  <div><%= answer.body %></div>
+	  <div><%= answer.user.username %></div>
+	<% end %>
+<% end %>
+
+<% if current_user %>
+	<h2>Answer Question</h2>
+
+	<%= form_for [@question, @answer] do |f| %>
+	  <%= f.label :body %> <br>
+	  <%= f.text_area :body, rows: 10, cols: 100 %> <br>
+	  <%= f.submit %>
+	<% end %>
+<% end %>
