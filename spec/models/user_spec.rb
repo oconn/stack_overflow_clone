@@ -1,12 +1,12 @@
-require 'spec_helper'
+  require 'spec_helper'
 
 describe User do
-  
+
   context "when signing up" do
 
     context "with valid credentials" do
       let(:user) {User.new(username: "oconn", password: "testtest", password_confirmation: "testtest")}
-      
+
       it "will redirect the user to their homepage and display a welcome message" do
         visit '/users/sign_up'
         fill_in 'Username', with: 'oconn'
@@ -19,7 +19,7 @@ describe User do
     end
 
     context "with invalid password" do
-      
+
       it "that is too short" do
         visit '/users/sign_up'
         fill_in 'Username', with: 'oconn'
