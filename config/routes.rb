@@ -2,6 +2,7 @@ StackOflow::Application.routes.draw do
   # You can have the root of your site routed with "root"
   devise_for :users
   root 'welcome#index'
+      resources :comments
   resources :questions do
     resources :answers
   end

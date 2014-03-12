@@ -6,25 +6,30 @@
 </div>
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
-<% if current_user && current_user.id == @question.user_id %>
-<%= link_to "Delete Question", question_path(@question.id), method: "delete" %>
+<% if current_user %>
+  <% if current_user.id == @question.user_id %>
+    <%= link_to "Delete Question", question_path(@question.id), method: "delete" %>
+  <% end %>
+  <%= link_to "Add Comment", comments_path(question_id: @question.id), method: "new", :id => "add_comment_question_id_#{@question.id}"  %>
 <% end %>
 
-
 <% if !@question.answers.empty? %>
-	<h3>Answers</h3>
-	<% @question.answers.each do |answer| %>
-	  <div><%= answer.body %></div>
-	  <div>Username: <%= answer.user.username %></div>
-	<% end %>
+  <h3>Answers</h3>
+  <% @question.answers.each do |answer| %>
+    <div><%= answer.body %></div>
+    <div>Username: <%= answer.user.username %></div>
+    <% if current_user %>
+      <%= link_to "Add Comment", comments_path(answer_id: answer.id), method: "new", :id => "add_comment_answer_id_#{answer.id}" %><br><br>
+    <% end %>
+  <% end %>
 <% end %>
 
 <% if current_user %>
-	<h2>Answer Question</h2>
+  <h2>Answer Question</h2>
 
-	<%= form_for [@question, @answer] do |f| %>
-	  <%= f.label :body %> <br>
-	  <%= f.text_area :body, rows: 10, cols: 100 %> <br>
-	  <%= f.submit %>
-	<% end %>
+  <%= form_for [@question, @answer] do |f| %>
+    <%= f.label :body %> <br>
+    <%= f.text_area :body, rows: 10, cols: 100 %> <br>
+    <%= f.submit %>
+  <% end %>
 <% end %>
