@@ -14,9 +14,34 @@
 end
 
 User.all.each do |user|
-  2.times do 
+  2.times do
     Question.create(user_id: user.id,
                     title: Faker::Lorem.words(num = 4).join,
-                    body: Faker::Lorem.paragraph) 
+                    body: Faker::Lorem.paragraph)
+  end
+end
+
+Question.all.each do |question|
+  3.times do
+    question.answers.create(user_id: rand(1..25),
+                          body: Faker::Lorem.paragraph)
+  end
+end
+
+Answer.all.each do |answer|
+  2.times do
+    answer.comments.create(user_id: rand(1..25), body: Faker::Lorem.words(num=5).join)
+  end
+end
+
+Question.all.each do |question|
+  2.times do
+    question.comments.create(user_id: rand(1..25), body: Faker::Lorem.words(num=5).join)
+  end
+end
+
+User.all.each do |user|
+  if !user.username
+    user.delete
   end
 end

@@ -1,9 +1,4 @@
-<div class="vote-count">
-	<ul>
-		<li class="arrow up-arrow"><%= link_to "⬆", question_upvote_path(@question.id) %>︎</li>
-		<li class-"arrow"><%= @question.vote_count %></li>
-		<li class="arrow down-arrow"><%= link_to "⬇", question_downvote_path(@question.id) %>︎</li>
-</div>
+
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
 <% if current_user %>
