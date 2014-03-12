@@ -3,5 +3,6 @@
 <h2>Questions</h2>
 
 <% @questions.each do |question| %>
-  <div><%= link_to question.title, question %></div>
+  <div><%= link_to question.title, question %><br>
+  	<%= question.body %></div>
 <% end %>
