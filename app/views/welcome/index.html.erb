@@ -1,0 +1,8 @@
+<h1>Welcome to ...</h1>
+
+<h2>Questions</h2>
+
+<% @questions.each do |question| %>
+  <div><%= link_to question.title, question %><br>
+  	<%= question.body %></div>
+<% end %>
