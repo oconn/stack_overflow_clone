@@ -8,13 +8,13 @@ StackOflow::Application.routes.draw do
   end
 
   resources :votes
-  match '/comments', to: 'comments#index',   via: :get
-  match '/comments', to: 'comments#create',  via: :post
-  match '/comments/new', to: 'comments#new',     via: :get
-  match '/comments/:id/edit', to: 'comments#edit',    via: :get
-  match '/comments/:id/show', to: 'comments#show',    via: :get
-  match '/comments/:id/update', to: 'comments#update',  via: :patch
-  match '/comments/:id/destroy', to: 'comments#destroy', via: :delete
+  match '/comments', to: 'comments#index',   via: :get, as: "comments"
+  match '/comments', to: 'comments#create'
+  match '/comments/new', to: 'comments#new',     via: :get, as: "new_comment"
+  match '/comments/:id/edit', to: 'comments#edit',    via: :get, as: "edit_comment"
+  match '/comments/:id/show', to: 'comments#show',    via: :get, as: "show_comment"
+  match '/comments/:id/update', to: 'comments#update'
+  match '/comments/:id/destroy', to: 'comments#destroy'
 
 
 
