@@ -1,0 +1,15 @@
+.vote-count {
+	ul {
+		display: table;
+		li {
+		  list-style: none;
+		}
+
+		.arrow a {
+			&:hover {
+				color: orange;
+				text-decoration: none;
+			}
+		}
+	}
+}

@@ -5,6 +5,8 @@ StackOflow::Application.routes.draw do
   resources :questions do
     resources :answers
   end
+  
+  resources :votes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
