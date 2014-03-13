@@ -21,8 +21,14 @@
     <% end %>
   </div>
 
-  <div class="col-xs-10">
+  <div class="col-xs-9">
     <p><%= @question.body %></p>
+  </div>
+
+  <div class="col-xs-2">
+    <h4>Visits</h4>
+    <p>Total: <%= @question.visit.total_visits rescue 0 %></p>
+    <p>Unique: <%= @question.visit.unique_visits rescue 0 %></p>
   </div>
 </div>
 

@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
 
   def index
-    @questions = Question.all.order(votes
+    @questions = Question.all
   end
 
   def new
@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = Answer.new
     @question_count = vote_total(@question)
+    Visit.track(@question, request.remote_ip)
   end
 
   def destroy
