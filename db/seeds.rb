@@ -44,7 +44,7 @@ Question.all.each do |question|
 end
 
 User.all.each do |user|
-  if !user.username
+  if !user.valid?
     user.delete
   end
 end
