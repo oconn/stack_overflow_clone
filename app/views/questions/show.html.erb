@@ -6,11 +6,19 @@
 
 <div class="row">
   <div class="col-xs-1">
-    <div class="voting">
-      <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_question_upvote_path(@question.id) %>
-      <p><%= @question_count %></p>
-      <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_question_downvote_path(@question.id) %>
-    </div>
+    <% if current_user %>
+      <div class="voting">
+        <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_question_upvote_path(@question.id) %>
+          <p><%= @question_count %></p>
+        <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_question_downvote_path(@question.id) %>
+      </div>
+    <% else %>
+      <div class="voting">
+        <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_user_registration_path %>
+          <p><%= @question_count %></p>
+        <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_user_registration_path %>
+      </div>
+    <% end %>
   </div>
 
   <div class="col-xs-10">
@@ -35,11 +43,19 @@
 
   <div class="row">
     <div class="col-xs-1">
-      <div class="voting">
-        <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_answer_upvote_path(answer.id) %>
-        <p><%= vote_total(answer) %></p>
-        <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_answer_downvote_path(answer.id) %>
-      </div>
+      <% if current_user %>
+        <div class="voting">
+          <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_answer_upvote_path(answer.id) %>
+            <p><%= vote_total(answer) %></p>
+          <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_answer_downvote_path(answer.id) %>
+        </div>
+      <% else %>
+        <div class="voting">
+          <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_user_registration_path %>
+            <p><%= @question_count %></p>
+          <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_user_registration_path %>
+        </div>
+      <% end %>
     </div>
 
     <div class="col-xs-10">
