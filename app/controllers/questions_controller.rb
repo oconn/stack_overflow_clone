@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.sort_by! { |question| Visit.where(visitable_id: question.id).count }
   end
 
   def new
