@@ -6,9 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-25.times do
-	User.create(username: Faker::Lorem.word,
-		          email: Faker::Internet.email,
+usernames = ["Jake The Snake", "Mr. Frowny", "The great disposable", "I don't know what to add as a name", "I'm not very creative", "Capt America", "Cobra Commander", "Batman", "Jesus", "Obama", "Hitler", "Wolverine", "Cyclops", "Robocop", "Collosus", "Beast", "Zealot", "Professor X.", "Magneto", "Mr. Roboto", "Saber Tooth", "Storm", "Mary", "Jane", "Banshee", "Master Chief", "Spiderman", "Peter Parker", "Bruce Willis", "Kori Roys", "KSolo", "Alyssa", "Torey", "Ryan", "Thomas", "Alex", "Ian (TERMAINTATOR)", "Jay", "Matt", "Neal", "Andrew", "Amarra", "Dan"]
+emails = ["this_will_be_valid_email@that.com"]
+
+usernames.each_with_index do |name, index|
+	User.create(username: name,
+		          email: "#{index}#{Faker::Internet.email}",
 		          password: "12345678",
 		          password_confirmation: "12345678")
 end
