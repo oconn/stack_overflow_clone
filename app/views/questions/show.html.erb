@@ -22,7 +22,17 @@
   </div>
 
   <div class="col-xs-9">
-    <p><%= markdown @question.body %></p>
+    <div class="question">
+      <%= markdown @question.body %>
+    </div>
+    <div class="comment-div">
+      <% @question.comments.all.each do |comment| %>
+        <div class="single-comment">
+          <p> <%= comment.body %> </p>
+          <p> <%= comment.user.username %> </p>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="col-xs-2">
@@ -64,12 +74,25 @@
       <% end %>
     </div>
 
-    <div class="col-xs-10">
-      <div><%= markdown answer.body %></div>
+    <div class="col-xs-9">
+      <div class="answer"><%= markdown answer.body %></div>
       <div>Username: <%= answer.user.username %></div>
       <% if current_user %>
         <%= link_to "Add Comment", new_comment_path(answer_id: answer.id) %>
       <% end %>
+
+      <div class="row">
+        <div class="comment-div">
+          <% answer.comments.all.each do |comment| %>
+            <div class="single-comment">
+              <p> <%= comment.body %> </p>
+              <p> <%= comment.user.username %> </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+
     </div>
   </div>
 
