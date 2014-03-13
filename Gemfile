@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 1.2'
 # User Auth
 gem 'devise', github: 'plataformatec/devise'
 
+gem 'sprockets', '2.11.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
