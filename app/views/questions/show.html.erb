@@ -1,11 +1,13 @@
 
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
+<p>By: <%= @question.user.username%></p>
 <% if current_user %>
   <% if current_user.id == @question.user_id %>
     <%= link_to "Delete Question", question_path(@question.id), method: "delete" %>
   <% end %>
-  <%= link_to "Add Comment", comments_path(question_id: @question.id), method: "new", :id => "add_comment_question_id_#{@question.id}"  %>
+  <% %>
+  <%= link_to "Add Comment", new_comment_path(question_id: @question.id) %>
 <% end %>
 
 <% if !@question.answers.empty? %>
@@ -14,7 +16,7 @@
     <div><%= answer.body %></div>
     <div>Username: <%= answer.user.username %></div>
     <% if current_user %>
-      <%= link_to "Add Comment", comments_path(answer_id: answer.id), method: "new", :id => "add_comment_answer_id_#{answer.id}" %>
+      <%= link_to "Add Comment", new_comment_path(answer_id: answer.id) %>
     <% end %><br><br>
   <% end %>
 <% end %>

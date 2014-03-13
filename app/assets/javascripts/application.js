@@ -15,3 +15,22 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+/*$(document).ready(function() {
+  $('.add_comment').on('click', function(e) {
+    e.preventDefault();
+    var commentParentType = $(this).attr("href");
+    alert('rawera')
+    $.ajax({
+        type: 'GET',
+        url: 'comments/new',
+        dataType: 'html',
+        success: function(xhr, textStatus) {
+            alert('awesome!!!');
+        },
+        error: function(xhr, textStatus, errorThrown) {
+                        alert('something went wrong');
+        }
+      });
+    });
+});
+*/
