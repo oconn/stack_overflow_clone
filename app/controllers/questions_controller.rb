@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  include VotesHelper
+
   before_filter :authenticate_user!, only: [:new]
 
   def index
@@ -23,6 +25,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
+    @question_count = vote_total(@question)
   end
 
   def destroy
@@ -30,6 +33,23 @@ class QuestionsController < ApplicationController
     @question.delete
     redirect_to root_path
   end
+
+  def create_up_vote
+    @question = Question.find(params[:id])
+    if @question.votes.where(user_id: current_user.id).empty?
+      @question.votes.create(user_id: current_user.id, vote_direction: true)
+    end
+    redirect_to @question
+  end
+
+  def create_down_vote
+    @question = Question.find(params[:id])
+    if @question.votes.where(user_id: current_user.id).empty?
+      @question.votes.create(user_id: current_user.id, vote_direction: false)
+    end
+    redirect_to @question
+  end
+
   private
 
   def question_params

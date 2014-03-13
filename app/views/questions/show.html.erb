@@ -1,7 +1,7 @@
 <div class="voting">
-  <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, "#" %>
-  <p>0</p>
-  <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, "#" %>
+  <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_question_upvote_path %>
+  <p><%= @question_count %></p>
+  <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_question_downvote_path %>
 </div>
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
