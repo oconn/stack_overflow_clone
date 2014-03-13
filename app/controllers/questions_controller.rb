@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
 
   def index
-
+    @questions = Question.all.order(votes
   end
 
   def new
