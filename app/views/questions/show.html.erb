@@ -22,7 +22,7 @@
   </div>
 
   <div class="col-xs-9">
-    <p><%= @question.body %></p>
+    <p><%= markdown @question.body %></p>
   </div>
 
   <div class="col-xs-2">
@@ -65,7 +65,7 @@
     </div>
 
     <div class="col-xs-10">
-      <div><%= answer.body %></div>
+      <div><%= markdown answer.body %></div>
       <div>Username: <%= answer.user.username %></div>
       <% if current_user %>
         <%= link_to "Add Comment", new_comment_path(answer_id: answer.id) %>
