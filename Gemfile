@@ -36,6 +36,10 @@ gem 'devise', github: 'plataformatec/devise'
 
 gem 'sprockets', '2.11.0'
 
+gem 'redcarpet'
+
+gem "pygments.rb", "~> 0.5.4"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
