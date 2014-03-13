@@ -1,27 +1,31 @@
 == README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+A question/answer repository in the vein of stackoverflow.
 
 * Ruby version
-
-* System dependencies
+Ruby v2.0.0 (p353)
+Rails 4.0.3
+Devise https://github.com/plataformatec/devise/commit/a8e1d4209706a4d904b968d0fe122bc25457cee8
 
 * Configuration
+Postgresql database
 
 * Database creation
+In terminal from project directory, run 'rake db:create'
 
 * Database initialization
+In terminal from project directory, run 'rake db:migrate'
 
 * How to run the test suite
+In terminal from project directory, run 'rspec'
 
-* Services (job queues, cache servers, search engines, etc.)
+* Running the app
+In terminal from project directory run 'bundle exec rails server'. Navigate to 'http://localhost:3000'.
 
-* Deployment instructions
+User registration/access is accessed from the top bar on the right side.
 
-* ...
+Questions can be viewed by any user. Question, answer, and comment submittal only for logged in users.
+
+* More features to come *
 
 
 Please feel free to use a different markup language if you do not plan to run
