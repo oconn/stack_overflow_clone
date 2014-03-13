@@ -1,7 +1,7 @@
 <div class="voting">
-  <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_question_upvote_path %>
+  <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_question_upvote_path(@question.id) %>
   <p><%= @question_count %></p>
-  <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_question_downvote_path %>
+  <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_question_downvote_path(@question.id) %>
 </div>
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
@@ -15,11 +15,21 @@
 <% if !@question.answers.empty? %>
   <h3>Answers</h3>
   <% @question.answers.each do |answer| %>
+
+    <div class="voting">
+      <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_answer_upvote_path(answer.id) %>
+      <p><%= vote_total(answer) %></p>
+      <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_answer_downvote_path(answer.id) %>
+    </div>
+
     <div><%= answer.body %></div>
+
     <div>Username: <%= answer.user.username %></div>
+
     <% if current_user %>
       <%= link_to "Add Comment", comments_path(answer_id: answer.id), method: "new", :id => "add_comment_answer_id_#{answer.id}" %><br><br>
     <% end %>
+
   <% end %>
 <% end %>
 

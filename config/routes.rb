@@ -6,9 +6,12 @@ StackOflow::Application.routes.draw do
   resources :questions do
     resources :answers
   end
-  
+
   match "/votes/question/upvote/:id",   to: "questions#create_up_vote",   via: :get, as: "new_question_upvote"
   match "/votes/question/downvote/:id", to: "questions#create_down_vote", via: :get, as: "new_question_downvote"
+
+  match "/votes/answer/upvote/:id",   to: "answers#create_up_vote",   via: :get, as: "new_answer_upvote"
+  match "/votes/answer/downvote/:id", to: "answers#create_down_vote", via: :get, as: "new_answer_downvote"
 
   resources :votes
   # The priority is based upon order of creation: first created -> highest priority.
