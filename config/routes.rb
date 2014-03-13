@@ -7,6 +7,9 @@ StackOflow::Application.routes.draw do
     resources :answers
   end
   
+  match "/votes/question/upvote/:id",   to: "questions#create_up_vote",   via: :get, as: "new_question_upvote"
+  match "/votes/question/downvote/:id", to: "questions#create_down_vote", via: :get, as: "new_question_downvote"
+
   resources :votes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
