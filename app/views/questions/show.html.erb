@@ -14,8 +14,8 @@
     <div><%= answer.body %></div>
     <div>Username: <%= answer.user.username %></div>
     <% if current_user %>
-      <%= link_to "Add Comment", comments_path(answer_id: answer.id), method: "new", :id => "add_comment_answer_id_#{answer.id}" %><br><br>
-    <% end %>
+      <%= link_to "Add Comment", comments_path(answer_id: answer.id), method: "new", :id => "add_comment_answer_id_#{answer.id}" %>
+    <% end %><br><br>
   <% end %>
 <% end %>
 
