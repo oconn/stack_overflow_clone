@@ -1,0 +1,7 @@
+<h1>Search Results</h1>
+
+<h2>Questions</h2>
+
+<% @questions.each do |question| %>
+  <div><%= link_to question.title, question %></div>
+<% end %>
