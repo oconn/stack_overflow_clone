@@ -8,8 +8,9 @@
 </head>
 <body>
 <%= render 'layouts/nav_bar' %>
-<%= render 'layouts/messages' %>
-<%= yield %>
-
+	<div class="container">
+		<%= render 'layouts/messages' %>
+		<%= yield %>
+	</div>
 </body>
 </html>

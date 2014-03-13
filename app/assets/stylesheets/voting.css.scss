@@ -1,0 +1,20 @@
+.voting > * {
+  display: table;
+  margin: auto;
+  font-size: 1.4em;
+  line-height: 0.7em;
+}
+
+.voting {
+  width: 3em;
+  p {
+    padding: 0;
+    margin: 0 auto;
+    width: 34px;
+    text-align: center;
+  }
+  a {
+    padding: 0.3em;
+    margin: 0 auto;
+  }
+}

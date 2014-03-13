@@ -1,17 +1,36 @@
+<div class="row">
+  <div class="col-xs-11">
+    <h1><%= @question.title %></h1>
+  </div>
+</div>
 
-<h1><%= @question.title %></h1>
-<p><%= @question.body %></p>
-<p>By: <%= @question.user.username%></p>
-<% if current_user %>
-  <% if current_user.id == @question.user_id %>
-    <%= link_to "Delete Question", question_path(@question.id), method: "delete" %>
-  <% end %>
-  <% %>
-  <%= link_to "Add Comment", new_comment_path(question_id: @question.id) %>
-<% end %>
+<div class="row">
+  <div class="col-xs-1">
+    <div class="voting">
+      <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_question_upvote_path(@question.id) %>
+      <p><%= @question_count %></p>
+      <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_question_downvote_path(@question.id) %>
+    </div>
+  </div>
+
+  <div class="col-xs-10">
+    <p><%= @question.body %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <% if current_user %>
+      <% if current_user.id == @question.user_id %>
+        <%= link_to "Delete Question", question_path(@question.id), method: "delete" %>
+      <% end %>
+      <%= link_to "Add Comment", comments_path(question_id: @question.id), method: "new", :id => "add_comment_question_id_#{@question.id}"  %>
+    <% end %>
+  </div>
+</div>
 
 <% if !@question.answers.empty? %>
-  <h3>Answers</h3>
+  <h3><%= @question.answers.count %> Answers</h3>
   <% @question.answers.each do |answer| %>
     <div><%= answer.body %></div>
     <div>Username: <%= answer.user.username %></div>
@@ -21,12 +40,38 @@
   <% end %>
 <% end %>
 
-<% if current_user %>
-  <h2>Answer Question</h2>
+  <div class="row">
+    <div class="col-xs-1">
+      <div class="voting">
+        <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, new_answer_upvote_path(answer.id) %>
+        <p><%= vote_total(answer) %></p>
+        <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, new_answer_downvote_path(answer.id) %>
+      </div>
+    </div>
 
-  <%= form_for [@question, @answer] do |f| %>
-    <%= f.label :body %> <br>
-    <%= f.text_area :body, rows: 10, cols: 100 %> <br>
-    <%= f.submit %>
+    <div class="col-xs-10">
+      <div><%= answer.body %></div>
+      <div>Username: <%= answer.user.username %></div>
+      <% if current_user %>
+        <%= link_to "Add Comment", comments_path(answer_id: answer.id), method: "new", :id => "add_comment_answer_id_#{answer.id}" %><br><br>
+      <% end %>
+    </div>
+  </div>
+
   <% end %>
 <% end %>
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <% if current_user %>
+      <h2>Answer Question</h2>
+
+      <%= form_for [@question, @answer] do |f| %>
+        <%= f.label :body %> <br>
+        <%= f.text_area :body, rows: 10, cols: 100 %> <br>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

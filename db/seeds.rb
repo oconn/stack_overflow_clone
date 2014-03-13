@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-usernames = ["Jake The Snake", "Mr. Frowny", "The great disposable", "I don't know what to add as a name", "I'm not very creative", "Capt America", "Cobra Commander", "Batman", "Jesus", "Obama", "Hitler", "Wolverine", "Cyclops", "Robocop", "Collosus", "Beast", "Zealot", "Professor X.", "Magneto", "Mr. Roboto", "Saber Tooth", "Storm", "Mary", "Jane", "Banshee", "Master Chief", "Spiderman", "Peter Parker", "Bruce Willis", "Kori Roys", "KSolo", "Alyssa", "Torey", "Ryan", "Thomas", "Alex", "Ian (TERMAINTATOR)", "Jay", "Matt", "Neal", "Andrew", "Amarra", "Dan"]
+usernames = ["Jake_The_Snake", "Mr_Frowny", "The_great_disposable", "I_dont_know_what_to_add_as_a_name", "Im_not_very_creative", "Capt_America", "Cobra_Commander", "Batman", "Jesus", "Obama", "Hitler", "Wolverine", "Cyclops", "Robocop", "Collosus", "Beast", "Zealot", "Professor_X", "Magneto", "Mr_Roboto", "Saber_Tooth", "Storm", "Mary", "Jane", "Banshee", "Master Chief", "Spiderman", "Peter_Parker", "Bruce_Willis", "Kori Roys", "KSolo", "Alyssa", "Torey", "Ryan", "Thomas", "Alex", "Ian_(TERMAINTATOR)", "Jay", "Matt", "Neal", "Andrew", "Amarra", "Dan"]
 emails = ["this_will_be_valid_email@that.com"]
 
 usernames.each_with_index do |name, index|
@@ -44,7 +44,7 @@ Question.all.each do |question|
 end
 
 User.all.each do |user|
-  if !user.username
+  if !user.valid?
     user.delete
   end
 end
