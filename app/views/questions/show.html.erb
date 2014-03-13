@@ -1,4 +1,8 @@
-
+<div class="voting">
+  <%= link_to "<span class='glyphicon glyphicon-arrow-up'></span>".html_safe, "#" %>
+  <p>0</p>
+  <%= link_to "<span class='glyphicon glyphicon-arrow-down'></span>".html_safe, "#" %>
+</div>
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
 <% if current_user %>
