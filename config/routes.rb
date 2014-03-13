@@ -7,6 +7,8 @@ StackOflow::Application.routes.draw do
     resources :answers
   end
 
+  match "search", to: "questions#search", via: :post
+
   match "/votes/question/upvote/:id",   to: "questions#create_up_vote",   via: :get, as: "new_question_upvote"
   match "/votes/question/downvote/:id", to: "questions#create_down_vote", via: :get, as: "new_question_downvote"
 

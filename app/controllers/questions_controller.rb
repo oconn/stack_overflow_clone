@@ -51,6 +51,13 @@ class QuestionsController < ApplicationController
     redirect_to @question
   end
 
+  def search
+    @search_content = params[:search_data]
+    @questions = Question.where("title ILIKE (?)", "%#{@search_content}%")
+  end
+
+
+
   private
 
   def question_params
