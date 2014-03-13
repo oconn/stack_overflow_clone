@@ -1,2 +1,6 @@
 <h1>Browse Popular Questions</h1>
+<% @questions.each do |question| %>
+  <div><%= link_to question.title, question %></div>
+
+<% end %>
 

@@ -4,4 +4,5 @@ module VotesHelper
     object.votes.where(vote_direction: true).count - object.votes.where(vote_direction: false).count
   end
 
+
 end
