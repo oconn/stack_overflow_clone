@@ -3,7 +3,7 @@
     <h1><%= @question.title %></h1>
   </div>
 </div>
- 
+
 <div class="row">
   <div class="col-xs-1">
     <% if current_user %>
@@ -20,18 +20,18 @@
       </div>
     <% end %>
   </div>
- 
+
   <div class="col-xs-9">
     <p><%= markdown @question.body %></p>
   </div>
- 
+
   <div class="col-xs-2">
     <h4>Visits</h4>
     <p>Total: <%= @question.visit.total_visits rescue 0 %></p>
     <p>Unique: <%= @question.visit.unique_visits rescue 0 %></p>
   </div>
 </div>
- 
+
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
     <% if current_user %>`
@@ -42,11 +42,11 @@
     <% end %>
   </div>
 </div>
- 
+
 <% if !@question.answers.empty? %>
   <h3><%= @question.answers.count %> Answers</h3>
   <% @question.answers.each do |answer| %>
- 
+
   <div class="row">
     <div class="col-xs-1">
       <% if current_user %>
@@ -63,7 +63,7 @@
         </div>
       <% end %>
     </div>
- 
+
     <div class="col-xs-10">
       <div><%= markdown answer.body %></div>
       <div>Username: <%= answer.user.username %></div>
@@ -72,15 +72,15 @@
       <% end %>
     </div>
   </div>
- 
+
   <% end %>
 <% end %>
- 
+
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
     <% if current_user %>
       <h2>Answer Question</h2>
- 
+
       <%= form_for [@question, @answer] do |f| %>
         <%= f.label :body %> <br>
         <%= f.text_area :body, rows: 10, cols: 100 %> <br>

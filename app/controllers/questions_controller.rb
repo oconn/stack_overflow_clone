@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
 
   def index
-
+    @questions = Question.all.sort_by! { |question| Visit.where(visitable_id: question.id).count }
   end
 
   def new
@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = Answer.new
     @question_count = vote_total(@question)
+    Visit.track(@question, request.remote_ip)
   end
 
   def destroy
@@ -49,6 +50,13 @@ class QuestionsController < ApplicationController
     end
     redirect_to @question
   end
+
+  def search
+    @search_content = params[:search_data]
+    @questions = Question.where("title ILIKE (?)", "%#{@search_content}%")
+  end
+
+
 
   private
 
