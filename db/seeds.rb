@@ -13,33 +13,33 @@ User.create(username: "oconn",
 
 User.create(username: "slim_johnson",
             email: "pencildick@gmail.com",
-            password: "123456",
-            password_confirmation: "123456")
+            password: "12345678",
+            password_confirmation: "12345678")
 
 User.create(username: "BATMAN",
             email: "batlove@gmail.com",
-            password: "123456",
-            password_confirmation: "123456")
+            password: "12345678",
+            password_confirmation: "12345678")
 
 User.create(username: "DANIMAL",
             email: "JSWIZ@gmail.com",
-            password: "123456",
-            password_confirmation: "123456")
+            password: "12345678",
+            password_confirmation: "12345678")
 
 User.create(username: "poodlesaurus",
             email: "fluffpuff@gmail.com",
-            password: "123456",
-            password_confirmation: "123456")
+            password: "12345678",
+            password_confirmation: "12345678")
 
 User.create(username: "ice_man",
             email: "topgunfetish@gmail.com",
-            password: "123456",
-            password_confirmation: "123456")
+            password: "12345678",
+            password_confirmation: "12345678")
 
 User.create(username: "clown_dev",
             email: "clownsrllcoolj@gmail.com",
-            password: "123456",
-            password_confirmation: "123456")
+            password: "12345678",
+            password_confirmation: "12345678")
 
 Question.create(user_id: 1,
                 title: "Why am I the bootstrap king?!",
