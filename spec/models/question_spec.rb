@@ -4,6 +4,12 @@ Warden.test_mode!
 
 describe Question do
 
+  it 'Should not save a question with an empty title' do
+    expect {
+      Question.create(body: 'some stuff in the body of the question')
+    }.to change(Question, :count).by(0)
+  end
+
   context "when asking question" do
 
     context "with valid inputs" do
