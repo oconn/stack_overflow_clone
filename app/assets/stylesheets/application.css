@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+
+/*.navbar-brand {
+  font-family: 'eg_dragon_caps_regular';
+}
+*/
+
+.navbar-brand {
+  font-family: 'eg_dragon_caps_regular';
+}
