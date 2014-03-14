@@ -8,3 +8,10 @@
   color: red;
   font-size: 3em;
 }
+
+.fire-link {
+  color: blue;
+  &:hover {
+    color: red;
+  }
+}

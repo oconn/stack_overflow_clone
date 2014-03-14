@@ -56,7 +56,7 @@
     <div class="col-xs-1">
       <% if @question.best_answer == nil %>
         <% if current_user && current_user.id == @question.user_id %>
-          <%= link_to "<span class='glyphicon glyphicon-fire'></span>".html_safe, mark_as_best_path(@question.id, answer.id) %>
+          <%= link_to "<span class='glyphicon glyphicon-fire fire-link'></span>".html_safe, mark_as_best_path(@question.id, answer.id) %>
         <% end %>
       <% end %>
 
@@ -103,7 +103,7 @@
 
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
-    <% if current_user %>
+    <% if current_user && current_user.id != @question.user_id  %>
       <h2>Answer Question</h2>
 
       <%= form_for [@question, @answer] do |f| %>
