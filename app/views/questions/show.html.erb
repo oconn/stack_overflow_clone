@@ -22,8 +22,9 @@
   </div>
 
   <div class="col-xs-9">
-    <p><%= markdown @question.body %></p>
+    <div class="question-body"><%= markdown @question.body %></div>
 
+    <h4>Comments: </h4>
     <% @question.comments.each do |comment| %>
       <p><%= comment.body %></p>
       <p>Username: <%= comment.user.username %></p>
@@ -82,9 +83,10 @@
     </div>
 
     <div class="col-xs-9">
-      <div><%= markdown answer.body %></div>
+      <div class="answer-body"><%= markdown answer.body %></div>
       <div>Username: <%= answer.user.username %></div>
 
+      <h4>Comments: </h4>
       <div class="comments">
         <% answer.comments.each do |comment| %>
           <p><%= comment.body %></p>
