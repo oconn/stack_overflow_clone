@@ -1,0 +1,4 @@
+<h1>Top 10 Users</h1>
+<% @users.all.each_with_index do |user, index| %>
+  <p> <%= link_to "#{index + 1}. #{user.username}", user %> -- <%= user.vote_points %> Points </p>
+<% end %>

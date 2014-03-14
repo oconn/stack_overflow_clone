@@ -9,6 +9,8 @@
         <li class="active">
           <li><%= link_to "Ask Question", new_question_path %></li>
           <li><%= link_to "Recent Questions", questions_path %></li>
+          <li><%= link_to "Top Users", top_users_path %></li>
+          <li><%= link_to "DEBUG DELETE THIS", user_path(5) %></li>
       </ul>
       <%= form_for :search, url: search_path, method: :post, html: {class: "navbar-form navbar-left", role: "search"} do |f| %>
         <div class="form-group">
