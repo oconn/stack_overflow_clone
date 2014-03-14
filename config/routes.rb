@@ -15,6 +15,8 @@ StackOflow::Application.routes.draw do
   match "/votes/answer/upvote/:id",   to: "answers#create_up_vote",   via: :get, as: "new_answer_upvote"
   match "/votes/answer/downvote/:id", to: "answers#create_down_vote", via: :get, as: "new_answer_downvote"
 
+  match "/questions/:question_id/mark_as_best/:answer_id", to: "questions#mark_as_best", via: :get, as: "mark_as_best"
+
   resources :votes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
