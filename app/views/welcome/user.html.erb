@@ -6,7 +6,7 @@
   <p>You have no questions to display!</p>
 <% else %>
   <% @user.questions.each_with_index do |question, index| %>
-    <h5><%= link_to "Question #{index + 1}", question %></h5>
+    <h5><%= link_to "Question #{index + 1}", question %> </h5>
     <%= question.title %>
   <% end %>
 <% end %>

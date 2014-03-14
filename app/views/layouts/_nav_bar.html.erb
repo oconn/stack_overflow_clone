@@ -8,7 +8,7 @@
       <ul class="nav navbar-nav">
         <li class="active">
           <li><%= link_to "Ask Question", new_question_path %></li>
-          <li><%= link_to "Recent Questions", questions_path %></li>
+          <li><%= link_to "Popular Questions", questions_path %></li>
           <li><%= link_to "Top Users", top_users_path %></li>
       </ul>
       <%= form_for :search, url: search_path, method: :post, html: {class: "navbar-form navbar-left", role: "search"} do |f| %>
