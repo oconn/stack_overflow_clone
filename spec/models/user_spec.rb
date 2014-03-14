@@ -3,46 +3,39 @@
 describe User do
   context 'User authentication and validations' do
     it 'Should not save if username is not given' do
-      expect {
-        User.create(email: 'bubbles@bubbles.com', password: 'password', password_confirmation: 'password')
-      }.to change(User, :count).by(0)
+      user = User.create(email: 'bubbles@bubbles.com', password: 'password', password_confirmation: 'password')
+      expect(user.valid?).to eq(false)
     end
 
     it 'Should not save if email is not given' do
-      expect {
-        User.create(username: 'bubbles', password: 'password', password_confirmation: 'password')
-      }
+      user = User.create(username: 'bubbles', password: 'password', password_confirmation: 'password')
+      expect(user.valid?).to eq(false)
     end
 
     it 'Should not save if password is not given' do
-      expect {
-        User.create(username: 'bubbles', email: 'bubbles@bubbles.com', password_confirmation: 'password')
-      }.to change(User, :count).by(0)
+      user = User.create(username: 'bubbles', email: 'bubbles@bubbles.com', password_confirmation: 'password')
+      expect(user.valid?).to eq(false)
     end
 
     it 'Should not save if password confirmation is not given' do
-      expect {
-        User.create(username: 'bubbles', email: 'bubbles@bubbles.com', password: 'password')
-      }.to change(User, :count).by(0)
+      user = User.create(username: 'bubbles', email: 'bubbles@bubbles.com', password: 'password')
+      expect(user.valid?).to eq(false)
     end
 
     it 'Should not save if password does not match password confirmation' do
-      expect {
-        User.create(username: 'bubbles', email: 'bubbles@bubbles.com', password: 'password', password_confirmation: 'someotherthing')
-      }.to change(User, :count).by(0)
+      user = User.create(username: 'bubbles', email: 'bubbles@bubbles.com', password: 'password', password_confirmation: 'someotherthing')
+      expect(user.valid?).to eq(false)
     end
 
     it 'Should not save an invalid email' do
-      expect {
-        User.create(username: 'bubbles', email: 'bubbles@bubbles', password: 'password', password_confirmation: 'password')
-      }.to change(User, :count).by(0)
+      user = User.create(username: 'bubbles', email: 'bubbles@bubbles', password: 'password', password_confirmation: 'password')
+      expect(user.valid?).to eq(false)
     end
 
     it 'Should not save if a username is not unique' do
-      User.create(username: 'bubbles', email: 'bubbles@bubbles', password: 'password', password_confirmation: 'password')
-      expect {
-        User.create(username: 'bubbles', email: 'bubbles@bubbles', password: 'password', password_confirmation: 'password')
-      }.to change(User, :count).by(0)
+      user_1 = User.create(username: 'bubbles', email: 'bubbles@bubbles', password: 'password', password_confirmation: 'password')
+      user_2 = User.create(username: 'bubbles', email: 'bubbles@bubbles', password: 'password', password_confirmation: 'password')
+      expect(user_2.valid?).to eq(false)
     end
   end
 

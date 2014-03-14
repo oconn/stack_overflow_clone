@@ -5,15 +5,31 @@ Warden.test_mode!
 describe Question do
 
   it 'Should not save a question with an empty title' do
-    expect {
-      Question.create(body: 'some stuff in the body of the question')
-    }.to change(Question, :count).by(0)
+      question = Question.create(body: 'some stuff in the body of the question')
+      expect(question.valid?).to eq(false)
+      #if saved to database, the id will not be nil
+      #if not, then your thing got bounced by the validations, which is what you want.
+  end
+
+  it 'Should not save a question with an empty body' do
+    question = Question.create(title: 'Some title here!')
+    expect(question.valid?).to eq(false)
+  end
+
+  it 'Should not save a question without a user id' do
+    question = Question.create(title: 'something here', body: 'some more stuff here')
+    expect(question.valid?).to eq(false)
+  end
+
+  it 'Should save a question that has a title, body, and user id' do
+    question = Question.create(title: 'Fun times here', body: 'body teeeexxxttt!!!!!!', user_id: 1)
+    expect(question.valid?).to eq(true)
   end
 
   context "when asking question" do
 
     context "with valid inputs" do
-      let(:user) {User.create!(username: "oconn", email: "dan@dan.com", password: "testtest", password_confirmation: "testtest")}
+      let(:user) {User.create(username: "oconn", email: "dan@dan.com", password: "testtest", password_confirmation: "testtest")}
 
       it "redirect user to the question page upon successful completion of form" do
 

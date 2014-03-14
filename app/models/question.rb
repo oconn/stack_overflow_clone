@@ -7,6 +7,7 @@ class Question < ActiveRecord::Base
 
   validates :title, presence: true
   validates :body, presence: true
+  validates :user_id, presence: true
   validates_length_of :title, :minimum => 5, :allow_blank => false
   validates_length_of :body, :minimum => 5, :allow_blank => false
 
