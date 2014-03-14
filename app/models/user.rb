@@ -9,5 +9,4 @@ class User < ActiveRecord::Base
   has_many :answers
 
   validates :username, presence: true, uniqueness: true
-
 end
