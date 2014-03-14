@@ -1,4 +1,4 @@
-class CreateVisitDetails < ActiveRecord::Migration
+ class CreateVisitDetails < ActiveRecord::Migration
   def change
     create_table :visit_details do |t|
       t.integer :visit_id

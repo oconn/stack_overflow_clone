@@ -1,0 +1,37 @@
+<h1><%= @user.username %> (<%= @user.vote_points %> points)</h1>
+
+<h3>Questions Asked</h3>
+
+<% if @user.questions.empty? %>
+  <p>You have no questions to display!</p>
+<% else %>
+  <% @user.questions.each_with_index do |question, index| %>
+    <h5><%= link_to "Question #{index + 1}", question %> </h5>
+    <%= question.title %>
+  <% end %>
+<% end %>
+
+<h3>Questions Answered</h3>
+<% if @user.answers.empty? %>
+  <p>You have no answers to display!</p>
+<% else %>
+  <% @user.answers.each_with_index do |answer, index| %>
+    <h5><%= link_to "Answer #{index + 1}", answer.question %></h5>
+    <%= answer.body %>
+  <% end %>
+<% end %>
+
+<h3>Comments</h3>
+<% if @user.comments.empty? %>
+  <p>You have no comments to display!</p>
+<% else %>
+  <% @user.comments.each_with_index do |comment, index| %>
+    <% if comment.commentable_type == "Question" %>
+      <h5><%= link_to "Comment #{index + 1}", Question.find(comment.commentable_id) %></h5>
+    <% else %>
+      <h5><%= link_to "Comment #{index + 1}", Answer.find(comment.commentable_id).question %></h5>
+    <% end %>
+
+    <%= comment.body %>
+  <% end %>
+<% end %>

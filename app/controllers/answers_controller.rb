@@ -15,6 +15,8 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     if @answer.votes.where(user_id: current_user.id).empty?
       @answer.votes.create(user_id: current_user.id, vote_direction: true)
+      @answer.user.vote_points += 1
+      @answer.user.save
     end
     redirect_to @answer.question
   end
@@ -23,6 +25,8 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     if @answer.votes.where(user_id: current_user.id).empty?
       @answer.votes.create(user_id: current_user.id, vote_direction: false)
+      @answer.user.vote_points -= 1
+      @answer.user.save
     end
     redirect_to @answer.question
   end
