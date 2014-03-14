@@ -8,9 +8,8 @@
       <ul class="nav navbar-nav">
         <li class="active">
           <li><%= link_to "Ask Question", new_question_path %></li>
-          <li><%= link_to "Recent Questions", questions_path %></li>
+          <li><%= link_to "Popular Questions", questions_path %></li>
           <li><%= link_to "Top Users", top_users_path %></li>
-          <li><%= link_to "DEBUG DELETE THIS", user_path(5) %></li>
       </ul>
       <%= form_for :search, url: search_path, method: :post, html: {class: "navbar-form navbar-left", role: "search"} do |f| %>
         <div class="form-group">
@@ -21,7 +20,8 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to "Profile", edit_user_registration_path %></li>
+          <li><%= link_to "Public Profile", user_path(current_user.id) %></li>
+          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
