@@ -3,6 +3,10 @@
   <%= form_for @comment do |f| %>
     <%= f.label :body %> <br>
     <%= f.text_area :body, rows: 10, cols: 100 %> <br>
+    <%# 
+      CODE REVIEW: You could dry these up by making the fields in the form
+      f.hidden :commentable_type and f.hidden :commentable_id
+    %>
     <%= hidden_field_tag 'question', "#{@question.id}" %>
     <%= f.submit %>
   <% end %>

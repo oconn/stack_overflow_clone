@@ -31,6 +31,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# CODE REVIEW: Why are using the master version of this instead of the
+# gem version of this
 # User Auth
 gem 'devise', github: 'plataformatec/devise'
 

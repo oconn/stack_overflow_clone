@@ -7,6 +7,7 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to @question
     else
+      # CODE REVIEW: What the heck?
       p "failed"
     end
   end

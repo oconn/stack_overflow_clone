@@ -1,5 +1,7 @@
   require 'spec_helper'
 
+# CODE REVIEW: This is the wrong place for feature tests. Tests here should
+# be unit tests
 describe User do
 
   context "when signing up" do

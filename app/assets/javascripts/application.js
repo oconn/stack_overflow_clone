@@ -15,6 +15,9 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+// CODE REVIEW: application javascript code should not live in this file.
+// (See the comment about from Rails)
 /*$(document).ready(function() {
   $('.add_comment').on('click', function(e) {
     e.preventDefault();

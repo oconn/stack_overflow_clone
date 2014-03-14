@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
+  # CODE REVIEW: I think you could really dry up this code with a method named
+  # something like "find_commentable" that returns the object that you are 
+  # commenting on. 
   def new
     @comment = Comment.new
+    # CODE REVIEW: instance variables don't suffer from the same "undefined
+    # variable" issues as local variables, so no need to initialize with nil
     @question = nil
     @answer = nil
     if params[:question_id]

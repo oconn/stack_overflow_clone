@@ -2,6 +2,7 @@ StackOflow::Application.routes.draw do
   # You can have the root of your site routed with "root"
   devise_for :users
   root 'welcome#index'
+  # CODE REVIEW: "nit" - indentation
       resources :comments
   resources :questions do
     resources :answers
@@ -9,14 +10,17 @@ StackOflow::Application.routes.draw do
 
   match "search", to: "questions#search", via: :post
 
+  # CODE REVIEW: these seem like member methods of the :questions resource
   match "/votes/question/upvote/:id",   to: "questions#create_up_vote",   via: :get, as: "new_question_upvote"
   match "/votes/question/downvote/:id", to: "questions#create_down_vote", via: :get, as: "new_question_downvote"
 
+  # CODE REVIEW: same as above but for :answers resource
   match "/votes/answer/upvote/:id",   to: "answers#create_up_vote",   via: :get, as: "new_answer_upvote"
   match "/votes/answer/downvote/:id", to: "answers#create_down_vote", via: :get, as: "new_answer_downvote"
   match "/top_users", to: "welcome#top_users", via: :get, as: "top_users"
   match "/user", to: "welcome#user", via: :get, as: "user"
 
+  # CODE REVIEW: is this used?
   resources :votes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

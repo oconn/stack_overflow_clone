@@ -6,6 +6,8 @@ describe Question do
 
   context "when asking question" do
 
+    # CODE REVIEW: This is the wrong place for feature tests. Tests here should
+    # be unit tests
     context "with valid inputs" do
       let(:user) {User.create!(username: "oconn", email: "dan@dan.com", password: "testtest", password_confirmation: "testtest")}
 
