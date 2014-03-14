@@ -6,51 +6,32 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(username: "oconn",
-            email: "matt@gmail.com",
-            password: "testtest",
-            password_confirmation: "testtest")
+User.create(username: "abed",
+            email: "abed@abed.com",
+            password: "password",
+            password_confirmation: "password")
 
 
-usernames = ["Jake_The_Snake", "Mr_Frowny", "The_great_disposable", "I_dont_know_what_to_add_as_a_name", "Im_not_very_creative", "Capt_America", "Cobra_Commander", "Batman", "Jesus", "Obama", "Hitler", "Wolverine", "Cyclops", "Robocop", "Collosus", "Beast", "Zealot", "Professor_X", "Magneto", "Mr_Roboto", "Saber_Tooth", "Storm", "Mary", "Jane", "Banshee", "Master Chief", "Spiderman", "Peter_Parker", "Bruce_Willis", "Kori Roys", "KSolo", "Alyssa", "Torey", "Ryan", "Thomas", "Alex", "Ian_(TERMAINTATOR)", "Jay", "Matt", "Neal", "Andrew", "Amarra", "Dan"]
-emails = ["this_will_be_valid_email@that.com"]
+usernames = ["Troy", "Britta", "Annie", "Pierce", "Chang", "Jeff", "Shirley"]
+emails = []
 
-usernames.each_with_index do |name, index|
+usernames.each do |name|
 	User.create(username: name,
-		          email: "#{index}#{Faker::Internet.email}",
+		          email: "#{Faker::Internet.email}",
 		          password: "12345678",
 		          password_confirmation: "12345678")
 end
 
-User.all.each do |user|
-  2.times do
-    Question.create(user_id: user.id,
-                    title: Faker::Lorem.words(num = 4).join,
-                    body: Faker::Lorem.paragraph)
-  end
-end
+Question.create(user_id: 1, title: "Why is the dragon sad?", body: "Why did you shit on his dreams?")
+Answer.create(user_id: 2, question_id: 1, body: "Is it because he didn't watch Inspector Spacetime?")
+Answer.create(user_id: 3, question_id: 1, body: "Because DBC really Brittad this project.")
 
-Question.all.each do |question|
-  3.times do
-    question.answers.create(user_id: rand(1..25),
-                          body: Faker::Lorem.paragraph)
-  end
-end
+Question.create(user_id: 5, title: "Q: What's the difference between the dinosaur and a dragon...?", body: "Dinosaurs are too young to smoke! har har har...")
+Answer.create(user_id: 7, question_id: 2, body: "Go home Pierce.")
+Answer.create(user_id: 6, question_id: 2, body: "CHANG CHANG CHANG CHANG")
 
-Answer.all.each do |answer|
-  2.times do
-    answer.comments.create(user_id: rand(1..25), body: Faker::Lorem.words(num=5).join)
-  end
-end
+Question.create(user_id: 4, title: "My Dragon smells...how do I even fix that with coding?")
+Answer.create(user_id: 7, question_id: 3, body: "You don't")
 
-Question.all.each do |question|
-  2.times do
-    question.comments.create(user_id: rand(1..25), body: Faker::Lorem.words(num=5).join)
-  end
-end
-
-User.all.each do |user|
-  if !user.valid?
-    user.delete
-  end
-end
+Question.create(user_id: 7, title: "How do you cheer up a dragon?", body: "I found a sad dragon crying because Troy is gone...what should I do?")
+Answer.create(user_id: 3, question_id: 4, body: "Sad dragons should be taken care of and their feelings respected. If you do not respect dragons and care about their feelings, they will stay sad. Seriously....be nice to dragons").comments.create(user_id: 7, body: "Shut up Britta")
