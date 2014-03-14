@@ -38,6 +38,8 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question = Question.find(params[:id])
+    @question.user.vote_points -= 1
+    @question.user.save
     @question.delete
     redirect_to root_path
   end
@@ -46,7 +48,10 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.votes.where(user_id: current_user.id).empty?
       @question.votes.create(user_id: current_user.id, vote_direction: true)
+      @question.user.vote_points += 1
+      @question.user.save
     end
+
     redirect_to @question
   end
 
@@ -54,6 +59,8 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.votes.where(user_id: current_user.id).empty?
       @question.votes.create(user_id: current_user.id, vote_direction: false)
+      @question.user.vote_points -= 1
+      @question.user.save
     end
     redirect_to @question
   end

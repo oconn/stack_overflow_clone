@@ -14,6 +14,8 @@ StackOflow::Application.routes.draw do
 
   match "/votes/answer/upvote/:id",   to: "answers#create_up_vote",   via: :get, as: "new_answer_upvote"
   match "/votes/answer/downvote/:id", to: "answers#create_down_vote", via: :get, as: "new_answer_downvote"
+  match "/top_users", to: "welcome#top_users", via: :get, as: "top_users"
+  match "/user", to: "welcome#user", via: :get, as: "user"
 
   match "/questions/:question_id/mark_as_best/:answer_id", to: "questions#mark_as_best", via: :get, as: "mark_as_best"
 
