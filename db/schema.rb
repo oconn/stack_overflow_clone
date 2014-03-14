@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20140314195348) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "best_answer"
   end
 
   create_table "users", force: true do |t|

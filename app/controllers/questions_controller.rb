@@ -29,6 +29,13 @@ class QuestionsController < ApplicationController
     Visit.track(@question, request.remote_ip)
   end
 
+  def mark_as_best
+    @question = Question.find(params[:question_id])
+    @question.update(best_answer: params[:answer_id])
+    flash[:notice] = "Best answered selected"
+    redirect_to @question
+  end
+
   def destroy
     @question = Question.find(params[:id])
     @question.user.vote_points -= 1

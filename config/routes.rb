@@ -17,6 +17,8 @@ StackOflow::Application.routes.draw do
   match "/top_users", to: "welcome#top_users", via: :get, as: "top_users"
   match "/user", to: "welcome#user", via: :get, as: "user"
 
+  match "/questions/:question_id/mark_as_best/:answer_id", to: "questions#mark_as_best", via: :get, as: "mark_as_best"
+
   resources :votes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
