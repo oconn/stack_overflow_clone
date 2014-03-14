@@ -1,0 +1,19 @@
+ development:
+  adapter: postgresql
+  encoding: utf8
+  database: name
+  username:
+  password:
+  host: localhost # not mandatory
+  pool: 5 # not mandatory
+  timeout: 5000 # not mandatory
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: name
+  username:
+  password:
+  host: localhost # not mandatory
+  pool: 5 # not mandatory
+  timeout: 5000 # not mandatory

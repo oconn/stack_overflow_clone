@@ -8,3 +8,25 @@
   color: red;
   font-size: 3em;
 }
+
+.fire-link {
+  color: blue;
+  &:hover {
+    color: red;
+  }
+}
+
+.question-body {
+  p {
+    font-size: 1em;
+    font-weight: bolder;
+  }
+}
+
+.answer-body {
+  margin: 1.6em auto 3em auto;
+  p {
+    font-size: 1em;
+    font-weight: bolder;
+  }
+}

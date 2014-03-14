@@ -32,13 +32,14 @@ class QuestionsController < ApplicationController
   def mark_as_best
     @question = Question.find(params[:question_id])
     @question.update(best_answer: params[:answer_id])
-    flash[:notice] = "Best answered selected"
+    flash[:notice] = "Best Answer Selected"
+    user = Answer.find(params[:answer_id]).user
+    user.update(vote_points: (user.vote_points + 5))
     redirect_to @question
   end
 
   def destroy
     @question = Question.find(params[:id])
-    @question.user.vote_points -= 1
     @question.user.save
     @question.delete
     redirect_to root_path
